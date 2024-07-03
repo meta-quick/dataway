@@ -1,0 +1,56 @@
+HASOR_DATAQL_DATAWAY: "true"
+HASOR_DATAQL_DATAWAY_ADMIN: "true"
+HASOR_DATAQL_DATAWAY_API_URL: /api/
+HASOR_DATAQL_DATAWAY_UI_URL: /ui/
+HASOR_DATAQL_FX_PAGE_DIALECT: mysql
+HASOR_DATAQL_DATAWAY_AUTHORIZATION_USERNAME: datasafe
+HASOR_DATAQL_DATAWAY_AUTHORIZATION_PASSWORD: Aa@123456
+  
+jasypt:
+  encryptor:
+    password: dev-env-secret
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+
+server:
+  port: 8099
+  servlet:
+    encoding:
+      charset: UTF-8
+      force-response: "true"
+
+spring:
+  http:
+    converters:
+      preferred-json-mapper: fastjson
+  datasource:
+    url: jdbc:mysql://192.168.11.155:3306/dataway?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8
+    username: root
+    password: sinux@123
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: "3"
+      min-idle: "3"
+      max-active: "10"
+      max-wait: "60000"
+      stat-view-servlet:
+        login-username: admin
+        login-password: admin
+      filter:
+        stat:
+          log-slow-sql: "true"
+          slow-sql-millis: "1"
+
+dataway:
+  databases:
+    - name: ds01
+      url: jdbc:mysql://192.168.11.155:3306/dataway?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8
+      username: root
+      password: sinux@123
+      driver-class-name: com.mysql.jdbc.Driver
+    - name: ds02
+      url: jdbc:mysql://192.168.11.155:3306/dataway?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&serverTimezone=GMT%2B8
+      username: root
+      password: sinux@123
+      driver-class-name: com.mysql.jdbc.Driver
